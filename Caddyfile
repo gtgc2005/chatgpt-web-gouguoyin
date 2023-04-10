@@ -1,9 +1,7 @@
 :8000 {
-  root * /chatgpt
-  file_server
+    reverse_proxy /chatgpt/* http://127.0.0.1:3000/api
 }
 
 :8001 {
-  root * /admin
-  file_server
+    reverse_proxy /admin/* http://127.0.0.1:3000/backend
 }
