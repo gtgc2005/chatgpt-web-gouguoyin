@@ -1,0 +1,9 @@
+:8000 {
+  root * /chatgpt
+  file_server
+}
+
+:8001 {
+  root * /admin
+  file_server
+}
