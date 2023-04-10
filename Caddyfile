@@ -1,7 +1,15 @@
-:8000 {
-    reverse_proxy /chatgpt/* http://127.0.0.1:3000/api
+{
+    # 配置全局选项
 }
 
-:8001 {
-    reverse_proxy /admin/* http://127.0.0.1:3000/backend
+http://localhost:8000 {
+    route /chatgpt/* {
+        reverse_proxy http://127.0.0.1:3000/api
+    }
+}
+
+http://localhost:8001 {
+    route /admin/* {
+        reverse_proxy http://127.0.0.1:3000/backend
+    }
 }
