@@ -12,7 +12,7 @@
 
 # 监听端口81，为/backend路径反向代理到http://127.0.0.1:3000/backend，其他路径返回静态文件
 :81 {
-	handle_path /api/* {
+	handle_path /backend/* {
 		rewrite /backend/*
 		reverse_proxy localhost:3000/backend
 	}
