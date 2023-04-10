@@ -5,7 +5,7 @@
 	}
 	handle /* {
 		file_server
-		root * /srv/chatgpt
+		root * /app/chatgpt
 		try_files {path} /index.html
 	}
 }
@@ -18,7 +18,7 @@
 	}
 	handle /* {
 		file_server
-		root * /srv/admin
+		root * /app/admin
 		try_files {path} /index.html
 	}
 }
