@@ -1,29 +1,24 @@
-{
-    # 配置全局选项
+# 监听端口80，为/api路径反向代理到http://127.0.0.1:3000，其他路径返回静态文件
+:80 {
+	handle_path /api/* {
+		reverse_proxy localhost:3000
+	}
+	handle /* {
+		file_server
+		root * /srv/chatgpt
+		try_files {path} /index.html
+	}
 }
 
-http://localhost:8000 {
-    # 执行后端
-    exec /bin/sh -c "./goravel &"
-    # 反向代理到后端
-    reverse_proxy /api/* http://127.0.0.1:3000
-    # 启用目录浏览功能
-    # 所有未指定文件的请求都会被浏览目录插件处理
-    browse /
-    # 指定文件服务器的根目录
-    root /usr/src/app/chatgpt-web-gouguoyin/chatgpt
-    # 启用gzip压缩
-    gzip
-}
-
-http://localhost:8001 {
-    # 反向代理到后端
-    reverse_proxy /backend/* http://127.0.0.1:3000/backend
-    # 启用目录浏览功能
-    # 所有未指定文件的请求都会被浏览目录插件处理
-    browse /
-    # 指定文件服务器的根目录
-    root /usr/src/app/chatgpt-web-gouguoyin/admin
-	# 启用gzip压缩
-    gzip
+# 监听端口81，为/backend路径反向代理到http://127.0.0.1:3000/backend，其他路径返回静态文件
+:81 {
+	handle_path /api/* {
+		rewrite /backend/*
+		reverse_proxy localhost:3000/backend
+	}
+	handle /* {
+		file_server
+		root * /srv/admin
+		try_files {path} /index.html
+	}
 }
