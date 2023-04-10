@@ -3,13 +3,17 @@
 }
 
 http://localhost:8000 {
-    route /chatgpt/* {
-        reverse_proxy http://127.0.0.1:3000/api
-    }
+    # 反向代理到另一个 Web 服务
+    reverse_proxy /api/* http://127.0.0.1:3000
+
+    # 指定文件服务器的根目录
+    file_server /usr/src/app/chatgpt-web-gouguoyin/chatgpt
 }
 
 http://localhost:8001 {
-    route /admin/* {
-        reverse_proxy http://127.0.0.1:3000/backend
-    }
+    # 反向代理到另一个 Web 服务
+    reverse_proxy /backend/* http://127.0.0.1:3000/backend
+
+    # 指定文件服务器的根目录
+    file_server /usr/src/app/chatgpt-web-gouguoyin/admin
 }
