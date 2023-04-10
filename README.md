@@ -7,6 +7,9 @@
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/13517412/230752872-b1670e7e-cce9-4744-becb-f0d657a58598.png">
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/13517412/230752885-776f357c-2c4a-4e1e-aaf5-f02ca6551be2.png">
 管理端
+<img width="1439" alt="image" src="https://user-images.githubusercontent.com/13517412/230766669-9eb38029-e0f3-4ba1-985d-abf0757505b4.png">
+<img width="1437" alt="image" src="https://user-images.githubusercontent.com/13517412/230766812-48c789dc-86c3-4ba7-8319-6a6eee2d7adc.png">
+
 <img width="1438" alt="image" src="https://user-images.githubusercontent.com/13517412/230752894-68024e88-2b77-47ba-83f4-c7d38589ede8.png">
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/13517412/230752907-586329a6-e395-48ef-9bdf-cce8b8610cdf.png">
 <img width="1438" alt="image" src="https://user-images.githubusercontent.com/13517412/230752920-87d24962-9452-496a-ad6f-7d67252a49e8.png">
@@ -36,24 +39,37 @@
 - 卡密套餐管理、卡密生成和核销
 
 ## 部署
-> 服务器无需安装任何环境，直接运行静态资源 和 二进制打包文件即可，如果需要绑定域名，只需要安装nginx
+> 服务器无需安装任何环境，只需要安装nginx, 直接运行静态 `html` 服务 和 二进制打包文件
 
-将数据库文件 `db.sql` 文件导入到mysql，修改 `.env` 数据库配置信息和邮箱配置信息
+将数据库文件 `db.sql` 文件导入到 `mysql`，修改 `.env` 数据库配置信息和邮箱配置信息
 
-在服务器上运行 `nohup ./goravel &` 启动后端服务
+在 `linux` 服务器上运行 `nohup ./goravel &` 启动后端服务，运行 `curl http://127.0.0.1:3000` ，如果出现 
+ `{"Hello":"Goravel"}` 说明后端服务启动成功
 
-将用户端绑定到 `chatgpt` 目录，如 chat.baidu.com，nginx 配置如下：
+将用户端绑定到 `chatgpt` 目录，如 `chat.baidu.com`，`nginx` 主要配置如下：
 ```shell
+listen 80;
+server_name chat.baidu.com;
+index index.php index.html index.htm default.php default.htm default.html;
+root /www/wwwroot/chat-gpt/public/chatgpt;
 location /api/{
     proxy_pass http://127.0.0.1:3000;
 }
 ```
-访问 chat.baidu.com 即可访问前台
+访问 `chat.baidu.com` 即可访问前台
 
-将管理端域名绑定到 `admin` 目录，如 admin.baidu.com，`nginx` 配置如下：
-访问 chat.baidu.com 即可访问管理后台，默认账号 `245629560@qq.com`, 密码 `123456` 
+将管理端域名绑定到 `admin` 目录，如 `admin.baidu.com`，`nginx` 主要配置如下：
 ```shell
+listen 80;
+server_name admin.baidu.com;
+index index.php index.html index.htm default.php default.htm default.html;
+root /www/wwwroot/chat-gpt/public/admin;
 location /backend/{
     proxy_pass http://127.0.0.1:3000/backend/;
 }
 ```
+访问 `chat.baidu.com` 即可访问管理后台，默认账号 `245629560@qq.com`, 密码 `123456` 
+
+## 鸣谢
+[chatgpt-web 原项目](https://github.com/Chanzhaoyu/chatgpt-web)  
+
