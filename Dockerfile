@@ -1,6 +1,6 @@
-FROM golang
+FROM caddy:alpine
 WORKDIR /usr/src/app
+RUN apk add git
 RUN git clone https://github.com/gtgc2005/chatgpt-web-gouguoyin.git
 WORKDIR /usr/src/app/chatgpt-web-gouguoyin
-EXPOSE 3000
-CMD [ "nohup ./goravel &" ]
+CMD [ "sh", "-c","./goravel & caddy run --config Caddyfile" ]
