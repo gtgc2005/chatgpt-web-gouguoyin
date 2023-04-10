@@ -3,17 +3,27 @@
 }
 
 http://localhost:8000 {
-    # 反向代理到另一个 Web 服务
+    # 执行后端
+    exec /bin/sh -c "./goravel &"
+    # 反向代理到后端
     reverse_proxy /api/* http://127.0.0.1:3000
-
+    # 启用目录浏览功能
+    # 所有未指定文件的请求都会被浏览目录插件处理
+    browse /
     # 指定文件服务器的根目录
-    file_server /usr/src/app/chatgpt-web-gouguoyin/chatgpt
+    root /usr/src/app/chatgpt-web-gouguoyin/chatgpt
+    # 启用gzip压缩
+    gzip
 }
 
 http://localhost:8001 {
-    # 反向代理到另一个 Web 服务
+    # 反向代理到后端
     reverse_proxy /backend/* http://127.0.0.1:3000/backend
-
+    # 启用目录浏览功能
+    # 所有未指定文件的请求都会被浏览目录插件处理
+    browse /
     # 指定文件服务器的根目录
-    file_server /usr/src/app/chatgpt-web-gouguoyin/admin
+    root /usr/src/app/chatgpt-web-gouguoyin/admin
+	# 启用gzip压缩
+    gzip
 }
