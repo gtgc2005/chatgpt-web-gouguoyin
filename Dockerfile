@@ -1,18 +1,16 @@
-FROM alpine:3.17
+FROM nginx:stable-alpine
 
-RUN mkdir -p /app
-RUN apk add --update caddy
-
-COPY chatgpt /app/chatgpt
-COPY admin /app/admin
-COPY Caddyfile /app/Caddyfile
+COPY chatgpt /var/www/html/gongying/chatgpt
+COPY admin /var/www/html/gongying/admin
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY goravel /app/goravel
 COPY .env /app/.env
 
 WORKDIR /app
 
-EXPOSE 80
-EXPOSE 81
+EXPOSE 8000
+EXPOSE 8001
 
 COPY startup.sh /app/startup.sh
-RUN chmod +x /app/startup.sh; mkdir /data
+RUN chmod +x /app/startup.sh
 CMD ["/app/startup.sh"]
