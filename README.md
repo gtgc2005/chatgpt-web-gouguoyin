@@ -1,13 +1,21 @@
 # ChatGPT Web
 
+
 ## 系统截图
 
 客户端
-<img width="1438" alt="image" src="https://user-images.githubusercontent.com/13517412/230752830-06bcb883-1a27-48de-8162-b42f2abb2d1e.png">
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/13517412/230752840-efd890fb-0457-4c2a-a8e3-cde93948f99e.png">
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/13517412/230752867-84c6e619-a151-4f7d-848a-120ccc64d5cf.png">
+![](https://gouguoyin.oss-cn-beijing.aliyuncs.com/tools/images/2130706433/20230424/登录.jpg)
+
+![](https://gouguoyin.oss-cn-beijing.aliyuncs.com/tools/images/2130706433/20230424/注册.jpg)
+
+![](https://gouguoyin.oss-cn-beijing.aliyuncs.com/tools/images/2130706433/20230424/验证.jpg)
+
+
 <img width="1439" alt="image" src="https://user-images.githubusercontent.com/13517412/230752872-b1670e7e-cce9-4744-becb-f0d657a58598.png">
-<img width="1439" alt="image" src="https://user-images.githubusercontent.com/13517412/230752885-776f357c-2c4a-4e1e-aaf5-f02ca6551be2.png">
+
+
+![](https://gouguoyin.oss-cn-beijing.aliyuncs.com/tools/images/2130706433/20230424/购买.jpg)
+
 
 <img width="1277" alt="image" src="https://user-images.githubusercontent.com/13517412/232736158-45458700-a61d-4c86-8f81-e7a842ebe073.png">
 
