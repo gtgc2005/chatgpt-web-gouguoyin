@@ -167,6 +167,8 @@ location /backend/{
     ```
     说明后端服务启动成功
 
+客户端和服务端域名绑定同手动部署
+
 ## 关联链接
 openai 独享账号推荐购买渠道：https://tomfk.top/buy/14
 
