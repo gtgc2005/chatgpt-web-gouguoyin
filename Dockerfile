@@ -1,4 +1,5 @@
 FROM alpine:3.17
+ENV VERSION 23.0429.1
 
 RUN mkdir -p /app
 RUN apk add --update caddy
