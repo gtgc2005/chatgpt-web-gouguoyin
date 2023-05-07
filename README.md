@@ -114,6 +114,11 @@ location / {
 }
 
 location /api/{
+    proxy_cache off;
+    proxy_cache_bypass $http_pragma;
+    proxy_cache_revalidate on;
+    proxy_http_version 1.1;
+    proxy_buffering off;
     proxy_pass http://127.0.0.1:3000;
 }
 ```
@@ -156,7 +161,7 @@ location /backend/{
     点击宝塔左侧文件菜单，找到 `service/.env` 配置文件，修改里面的数据库配置信息、邮箱配置信息和百度文本审核配置信息
     ![](https://gouguoyin.oss-cn-beijing.aliyuncs.com/tools/images/2130706433/20230419/007.png)
 
-- 启动服务端
+- 启动服务端(服务端不需要绑定域名)
 
     点击宝塔左侧网站菜单，选择 `go项目`，添加 `go项目`，选择要运行的二进制文件
     ![](https://gouguoyin.oss-cn-beijing.aliyuncs.com/tools/images/2130706433/20230419/008.png)
@@ -167,10 +172,10 @@ location /backend/{
     ```
     说明后端服务启动成功
 
-客户端和服务端域名绑定同手动部署
+客户端和服务端域名绑定和上面手动部署方式一样
 
 ## 关联链接
-openai 独享账号推荐购买渠道：https://tomfk.top/buy/14
+openai 独享账号推荐购买渠道：https://tomfk.top/buy/14  https://tomfk.top/buy/26
 
 自建代理开源项目：https://github.com/easychen/openai-api-proxy/
 
